@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-function Tickets(props) {
+function TasksContainer(props) {
   return (
     <div className="col-lg-3 col-md-6">
-      <div className="panel panel-red">
+      <div className="panel panel-green">
         <div className="panel-heading">
           <div className="row">
             <div className="col-xs-3">
-              <i className="fa fa-support fa-5x" />
+              <i className="fa fa-tasks fa-5x" />
             </div>
             <div className="col-xs-9 text-right">
-              <div className="huge">{props.tickets}</div>
-              <div>Support Tickets!</div>
+              <div className="huge">{props.newTasks}</div>
+              <div>New Tasks!</div>
             </div>
           </div>
         </div>
@@ -29,8 +29,12 @@ function Tickets(props) {
     </div>
   );
 }
+function mapStateToProps(state) {
+  return {
+    newTasks: state.newTasks
+  };
+}
 
-export default connect(
-  mapStateToProps,
-  null
-)(Tickets);
+const Tasks = connect(mapStateToProps)(TasksContainer);
+
+export default Tasks;

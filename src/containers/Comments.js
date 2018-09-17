@@ -1,18 +1,18 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-function Tickets(props) {
+function CommentsContainer(props) {
   return (
     <div className="col-lg-3 col-md-6">
-      <div className="panel panel-red">
+      <div className="panel panel-primary">
         <div className="panel-heading">
           <div className="row">
             <div className="col-xs-3">
-              <i className="fa fa-support fa-5x" />
+              <i className="fa fa-comments fa-5x" />
             </div>
             <div className="col-xs-9 text-right">
-              <div className="huge">{props.tickets}</div>
-              <div>Support Tickets!</div>
+              <div className="huge">{props.newComments}</div>
+              <div>New Comments!</div>
             </div>
           </div>
         </div>
@@ -30,7 +30,12 @@ function Tickets(props) {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Tickets);
+function mapStateToProps(state) {
+  return {
+    newComments: state.newComments
+  };
+}
+
+const Comments = connect(mapStateToProps)(CommentsContainer);
+
+export default Comments;

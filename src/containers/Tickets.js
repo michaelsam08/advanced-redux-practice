@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 
-function Tickets(props) {
+function TicketsContainer(props) {
   return (
     <div className="col-lg-3 col-md-6">
       <div className="panel panel-red">
@@ -30,7 +30,12 @@ function Tickets(props) {
   );
 }
 
-export default connect(
-  mapStateToProps,
-  null
-)(Tickets);
+function mapStateToProps(state) {
+  return {
+    tickets: state.tickets
+  };
+}
+
+const Tickets = connect(mapStateToProps)(TicketsContainer);
+
+export default Tickets;
